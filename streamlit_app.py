@@ -132,7 +132,8 @@ def calculate_score(questions: List[Dict], user_answers: Dict) -> Dict[str, Any]
         user_answer = user_answers.get(question_key, None)
         
         if question['question_type'] == 'MCQ':
-            is_correct = user_answer == question['correct_answer']
+            correct_answer = question.get('correct_answer', '')
+            is_correct = user_answer == correct_answer
             if is_correct:
                 correct_answers += 1
                 earned_points += question['points']
@@ -141,13 +142,15 @@ def calculate_score(questions: List[Dict], user_answers: Dict) -> Dict[str, Any]
                 'question_num': i + 1,
                 'question_text': question['question_text'],
                 'user_answer': user_answer,
-                'correct_answer': question['correct_answer'],
+                'correct_answer': correct_answer,
                 'is_correct': is_correct,
                 'points': question['points']
             })
         
         elif question['question_type'] == 'MSQ':
-            correct_answers_list = question.get('correct_answers', [question['correct_answer']])
+            correct_answers_list = question.get('correct_answers', [])
+            if not correct_answers_list and 'correct_answer' in question:
+                correct_answers_list = [question['correct_answer']]
             user_selected = user_answer if isinstance(user_answer, list) else []
             
             # For MSQ, check if all correct answers are selected and no incorrect ones
