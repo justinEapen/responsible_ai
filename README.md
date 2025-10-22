@@ -1,5 +1,7 @@
 # 🤖 Responsible AI Course - Practice Assignment Quiz
 
+Disclaimer: For Educational Purposes Only. 
+
 A comprehensive quiz application for the Responsible and Safe AI course, featuring 141 questions across 12 weeks.
 
 ## 🚀 Streamlit Cloud Deployment
