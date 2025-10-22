@@ -338,7 +338,7 @@ def main():
     
     # Footer
     st.markdown("---")
-    st.markdown("**Responsible AI Course** - Interactive Assignment Quiz System")
+    st.markdown("**Responsible AI Course** - Interactive Assignment Quiz System. All credits to: https://onlinecourses.nptel.ac.in/noc25_cs118/course")
 
 if __name__ == "__main__":
     main()
